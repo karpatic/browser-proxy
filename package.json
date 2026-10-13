@@ -36,6 +36,7 @@
     "webpack.config.js",
     "README.md",
     "AGENTS.md",
-    "LICENSE"
+    "LICENSE",
+    "NOTICE"
   ]
 }

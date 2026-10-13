@@ -194,4 +194,4 @@ The command requires `tar` and produces `.runtime/browser-proxy-source.tgz`. Thi
 
 Recipients extract the source, run `npm ci` and `npm run build`, then load their own `dist/` in Chrome. Source export does not initialize Git or publish anything.
 
-GPL-3.0-or-later. See [LICENSE](../LICENSE) for attribution and license details.
+GPL-3.0-or-later. See [LICENSE](../LICENSE) for the full terms and [NOTICE](../NOTICE) for project attribution and third-party notices.

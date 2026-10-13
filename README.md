@@ -95,4 +95,4 @@ npm run export
 
 Share **`.runtime/browser-proxy-source.tgz`**. It includes source, docs and agent instructions, and excludes private configuration and build artifacts. Recipients build locally to create their own credentials. See [source handoffs](docs/REFERENCE.md#source-handoffs).
 
-[Full reference](docs/REFERENCE.md) · [Coding agent guide](AGENTS.md) · [GPL-3.0-or-later license](LICENSE)
+[Full reference](docs/REFERENCE.md) · [Coding agent guide](AGENTS.md) · [GPL-3.0-or-later license](LICENSE) · [Notices](NOTICE)
