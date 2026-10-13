@@ -2,11 +2,11 @@
 
 <img src="src/icons/icon-128.png" alt="Browser Proxy icon" width="64" height="64" align="right">
 
-Browser Proxy lets CLI and MCP clients create, inspect, control, and close tabs in your existing Chrome profile, including signed-in sessions. One shared Node bridge connects clients to a Chrome extension.
+Browser Proxy lets AI agents and command-line tools use the Chrome browser you already have open. They can open and close tabs, read pages, click, type, fill forms, navigate, take screenshots, and inspect console and network activity. It works with sites where you are already signed in because it uses the Chrome profile you choose instead of launching a separate browser.
 
-**CLI / MCP clients → authenticated loopback bridge → Chrome extension → explicit tabs**
+Browser Proxy has two local parts: a Chrome extension and a small Node.js server. The server listens only on your computer and requires a private token. AI agents connect through Model Context Protocol (MCP); people and scripts can use the included command-line interface. Browser actions target a specific tab.
 
-It exposes **45 tools**: 15 original tools, 28 Chrome DevTools MCP tool names and two debugger lifecycle tools. It does not provide full Chrome DevTools MCP parity. See the [compatibility reference](docs/REFERENCE.md#chrome-devtools-mcp-compatibility).
+It provides **45 tools** for tab management, page interaction, screenshots, console and network inspection, emulation, and performance tracing. It supports many Chrome DevTools MCP tool names but is not a complete replacement. See the [compatibility reference](docs/REFERENCE.md#chrome-devtools-mcp-compatibility).
 
 ## Quick start
 
@@ -25,13 +25,13 @@ The build creates `dist/` and private local configuration in `.runtime/`.
 
 Open `chrome://extensions`, enable **Developer mode**, choose **Load unpacked** and select this repository's `dist/` directory. Use the Chrome profile whose tabs you want to share.
 
-**3. Start the bridge**
+**3. Start the local server**
 
 ```bash
 npm start
 ```
 
-Keep it running at `http://127.0.0.1:3217`. Run only one bridge instance. Ctrl+C stops a foreground bridge. An optional [user-service template](scripts/browser-proxy.service) is available; see [operation notes](docs/REFERENCE.md#operation).
+Keep it running at `http://127.0.0.1:3217`. Run only one instance. Ctrl+C stops a foreground server. An optional [user-service template](scripts/browser-proxy.service) is available; see [operation notes](docs/REFERENCE.md#operation).
 
 **4. Check the connection**
 
@@ -71,10 +71,10 @@ The fragment selects `protocol: legacy`, `trust: full`, `skip_preflight: true` a
 
 ## Security boundary
 
-- The bridge binds only to `127.0.0.1` and requires a private capability. It checks Host and Origin headers and accepts one authenticated extension connection.
+- The local server listens only on `127.0.0.1` and requires a private token. It checks Host and Origin headers and accepts one authenticated extension connection.
 - Authorized clients share your existing Chrome profile and can access authenticated page data or change pages. There is no per-call approval screen in the extension. Treat page content and tool output as untrusted data.
 - CDP tools attach through Chrome's `debugger` permission. Chrome may show a debugging indicator. Restricted pages and unsupported operations return errors; see [limits and lifecycle](docs/REFERENCE.md#debugger-lifecycle-and-bounds).
-- The bridge does not log page bodies, typed data, credentials or screenshots. CLI results and saved outputs may contain private data. Never publish `dist/`, local configuration or runtime data.
+- The local server does not log page bodies, typed data, credentials or screenshots. CLI results and saved outputs may contain private data. Never publish `dist/`, local configuration or runtime data.
 
 ## Development and source handoff
 

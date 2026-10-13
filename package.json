@@ -2,7 +2,7 @@
   "name": "browser-proxy",
   "version": "1.0.0",
   "private": true,
-  "description": "Shared loopback browser tool bridge and MV3 extension",
+  "description": "Let AI agents and command-line tools open tabs, read pages, click, type, navigate, and take screenshots in Chrome",
   "type": "module",
   "scripts": {
     "setup": "node scripts/setup.mjs",
