@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 16 16" fill="none">
+  <title>Browser Proxy</title>
+  <desc>A cobalt-blue rounded square with two solid white transfer arrows: right above, left below.</desc>
+  <!-- Native 16 px grid: full-canvas tile, 2 px shafts, and broad separate arrowheads. -->
+  <rect width="16" height="16" rx="3" fill="#155EEF"/>
+  <path d="M2 4H10V2L14 5L10 8V6H2Z" fill="#FFFFFF"/>
+  <path d="M14 10H6V8L2 11L6 14V12H14Z" fill="#FFFFFF"/>
+</svg>

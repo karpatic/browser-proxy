@@ -1,0 +1,53 @@
+{
+  "manifest_version": 3,
+  "name": "Browser Proxy",
+  "version": "1.0.0",
+  "minimum_chrome_version": "120",
+  "description": "One shared local tool bridge for your existing browser.",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxBPN97Ij7Jojtaupip+ILnBAOu8s3ky+/ISXqDcA1lrjE6dhsE9NhT8R72MpXKu5BDLfnMSI/HrDNyGvqiCpTBmM28pjwT4L1G/6I0qLeLKq2ABgnFYotlAdiQb2cMYM4fW2+yE2qUUxWOgBDPopxjQtqF44PJOmZpUYN04TKnnUnpAaJ5xOm7wmktDy/nzlMuf+LjCT3XA3Q+dE6zyt9EEjjdTsGubxpSLDk9w9X0PDktmWWin15xnDLYvPGcPa+tYt0wRxdYcr4AB0dnQt24LFCr3fn/6iNYdb2CrQ4CmPXxS+lp/aQa5A5B/Qn0jB+0VdCpCyQ/4KJkFY6vpPawIDAQAB",
+  "permissions": [
+    "sidePanel",
+    "tabs",
+    "scripting",
+    "webNavigation",
+    "alarms",
+    "debugger"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "action": {
+    "default_title": "Browser Proxy status and tabs",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "side_panel": {
+    "default_path": "panel.html"
+  },
+  "background": {
+    "service_worker": "service-worker.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "all_frames": true,
+      "run_at": "document_idle"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "name": "browser-proxy",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Shared loopback browser tool bridge and MV3 extension",
+  "type": "module",
+  "scripts": {
+    "setup": "node scripts/setup.mjs",
+    "start": "node bridge/server.mjs",
+    "build": "node scripts/setup.mjs && webpack --config webpack.config.js --mode production && node scripts/private-dist.mjs",
+    "icons:render": "node scripts/render-icons.mjs",
+    "up": "npm run build && npm start",
+    "cli": "node bridge/cli.mjs",
+    "test": "node --test test/bridge.test.mjs test/worker.test.mjs test/debugger.test.mjs",
+    "test:browser": "node test/browser.mjs",
+    "export": "node scripts/export.mjs"
+  },
+  "license": "GPL-3.0-or-later",
+  "devDependencies": {
+    "copy-webpack-plugin": "14.0.0",
+    "playwright-core": "^1.64.0",
+    "webpack": "5.110.3",
+    "webpack-cli": "7.2.3"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "ws": "^8.22.0",
+    "zod": "^4.6.5"
+  },
+  "files": [
+    "src/",
+    "bridge/",
+    "scripts/",
+    "test/",
+    "docs/",
+    "webpack.config.js",
+    "README.md",
+    "AGENTS.md",
+    "LICENSE"
+  ]
+}

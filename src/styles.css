@@ -1,0 +1,14 @@
+:root { color-scheme: light dark }
+body { margin: 0; background: Canvas; color: CanvasText }
+main { padding: 16px; min-width: 0 }
+h1 { margin-top: 0 }
+h2 { margin: 20px 0 8px }
+button { appearance: none; font: inherit; font-size: 16px; padding: 0; border: 0; background: none; color: LinkText; text-decoration: underline; cursor: pointer }
+button:focus:not(:focus-visible) { outline: none }
+button:focus-visible { outline: 2px solid Highlight; outline-offset: 3px }
+ul { padding: 0; list-style: none }
+li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: .5em; padding: 10px 0 }
+li::before { content: "-" }
+li button { justify-self: start; min-width: 0; text-align: left; overflow-wrap: anywhere }
+li button[aria-pressed="true"] { font-weight: 600 }
+#status { font-weight: 600 }

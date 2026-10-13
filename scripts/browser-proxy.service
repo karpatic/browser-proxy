@@ -1,0 +1,12 @@
+# Optional user service. Replace PROJECT_PATH and NODE_PATH with absolute paths.
+[Unit]
+Description=Browser Proxy shared local bridge
+[Service]
+Type=simple
+WorkingDirectory=PROJECT_PATH
+ExecStart=NODE_PATH PROJECT_PATH/bridge/server.mjs
+Restart=on-failure
+RestartSec=2
+UMask=0077
+[Install]
+WantedBy=default.target
