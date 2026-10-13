@@ -2,7 +2,7 @@
 
 <img src="src/icons/icon-128.png" alt="Browser Proxy icon" width="64" height="64" align="right">
 
-Browser Proxy lets CLI and MCP clients read and control tabs in your existing Chrome profile, including signed-in sessions. One shared Node bridge connects clients to a Chrome extension.
+Browser Proxy lets CLI and MCP clients create, inspect, control, and close tabs in your existing Chrome profile, including signed-in sessions. One shared Node bridge connects clients to a Chrome extension.
 
 **CLI / MCP clients → authenticated loopback bridge → Chrome extension → explicit tabs**
 
@@ -50,6 +50,7 @@ Replace `123` with a real tab ID. Adapt selectors to the page.
 
 ```bash
 npm run cli -- tools
+npm run cli -- tabs_create '{"url":"https://example.com","active":true}'
 npm run cli -- page_snapshot '{"tabId":123}'
 npm run cli -- page_read '{"tabId":123,"selector":"main"}'
 npm run cli -- page_fill '{"tabId":123,"selector":"#search","text":"hello"}'
@@ -58,7 +59,7 @@ npm run cli -- tabs_select '{"tabId":123}'
 npm run cli -- page_screenshot '{"tabId":123}' --output .runtime/viewport.png
 ```
 
-Operations on an existing tab require an explicit `tabId`. Selecting a tab never sets a target for later calls. `page_screenshot` requires an active tab; CDP `take_screenshot` also supports inactive tabs. `tools` returns argument schemas. See [DOM references and pagination](docs/REFERENCE.md#original-tools-and-dom-references) for reliable targeting.
+`tabs_create` and `new_page` create ordinary tabs in the shared Chrome profile; they do not start a separate browser or isolated profile. Operations on a tab require an explicit `tabId`. Selecting a tab never sets a target for later calls. `page_screenshot` requires an active tab; CDP `take_screenshot` also supports inactive tabs. `tools` returns argument schemas. See [DOM references and pagination](docs/REFERENCE.md#original-tools-and-dom-references) for reliable targeting.
 
 ## MCP and Hermes
 
